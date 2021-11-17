@@ -11,7 +11,7 @@ type CustomInputProps = {
 };
 
 export default class CustomInput extends React.Component<CustomInputProps> {
-  handleChange = (event: Event) => {
+  handleChange = (event: any) => {
     this.props.onInputChange(event?.target?.value);
   };
 
@@ -27,7 +27,6 @@ export default class CustomInput extends React.Component<CustomInputProps> {
           className="form-control"
         />
         <label htmlFor={this.props.name}>{this.props.name}</label>
-        <span>Value: {this.props.input}</span>
       </div>
     );
   }

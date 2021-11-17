@@ -1,17 +1,25 @@
 import React from "react";
 import api from "../api";
+import { URLEntry } from "../urlEntry.model";
 import UrlList from "./UrlList";
 import CustomInput from "./CustomInput";
 import UrlDisplay from "./UrlDisplay";
 
-export default class App extends React.Component {
+type AppState = {
+  url: string;
+  slug: string;
+  mostRecent: URLEntry | null;
+  list: Array<URLEntry>;
+}
+
+export default class App extends React.Component<{}, AppState> {
   constructor(props: any) {
     super(props);
     this.state = {
       url: "",
       slug: "",
       mostRecent: null,
-      list: ["one", "two", "three"]
+      list: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getAllUrlLinks = this.getAllUrlLinks.bind(this);
@@ -45,9 +53,8 @@ export default class App extends React.Component {
     });
   };
 
-  handleSubmit(event: Event) {
+  handleSubmit(event: any) {
     event.preventDefault();
-    console.log("Submit", this.state.url, this.state.slug);
     api
       .createShortenedUrlLink(this.state.url, this.state.slug)
       .then((response) => {
@@ -73,32 +80,44 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <h1>URL Shortener</h1>
-        <h2>Input a URL to get a shortened version.</h2>
-        <form onSubmit={this.handleSubmit}>
-          <CustomInput
-            type={"url"}
-            name={"url"}
-            placeholder={"https://google.com"}
-            input={this.state.url}
-            onInputChange={this.handleUrlChange}
-          />
-          <CustomInput
-            type={"text"}
-            name={"slug"}
-            placeholder={"/fun"}
-            input={this.state.slug}
-            onInputChange={this.handleSlugChange}
-          />
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
-        {this.state.mostRecent ? (
-          <UrlDisplay entry={this.state.mostRecent} />
-        ) : null}
-        <UrlList list={this.state.list} onRemove={this.handleRemove} />
+      <div className="App container">
+        <div className="row">
+          <h1>URL Shortener</h1>
+          <h2>Input a URL to get a shortened version.</h2>
+          <div className="col-12 col-md-6 d-flex flex-column justify-content-center">
+            <form onSubmit={this.handleSubmit}>
+              <div className="mb-3">
+                <CustomInput
+                  type={"url"}
+                  name={"Required url"}
+                  placeholder={"https://google.com"}
+                  input={this.state.url}
+                  onInputChange={this.handleUrlChange}
+                />
+              </div>
+              <div className="mb-3">
+                <CustomInput
+                  type={"text"}
+                  name={"Optional slug"}
+                  placeholder={"/fun"}
+                  input={this.state.slug}
+                  onInputChange={this.handleSlugChange}
+                />
+              </div>
+              <button type="submit" className="btn btn-primary mb-3">
+                Submit
+              </button>
+            </form>
+          </div>
+          <div className="col-12 col-md-6 d-flex flex-column justify-content-center">
+            {this.state.mostRecent ? (
+              <UrlDisplay entry={this.state.mostRecent} />
+            ) : null}
+          </div>
+        </div>
+        <div className="row">
+          <UrlList list={this.state.list} onRemove={this.handleRemove} />
+        </div>
       </div>
     );
   }

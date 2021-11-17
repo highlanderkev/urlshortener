@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`URL List Item Component matches snapshot 1`] = `
+<li
+  className="list-group-item d-flex justify-content-between align-items-start"
+>
+  <div
+    className="ms-2 me-auto"
+  >
+    <div
+      className="fw-bold"
+    >
+      <a
+        href="test"
+      >
+        test
+      </a>
+      <br />
+      <a
+        href="test"
+      >
+        test
+      </a>
+    </div>
+    <small>
+      test
+    </small>
+  </div>
+  <button
+    aria-label="Close"
+    className="btn-close"
+    onClick={[Function]}
+    type="button"
+  />
+</li>
+`;

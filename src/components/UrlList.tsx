@@ -29,12 +29,4 @@ class UrlList extends React.Component<UrlListProps> {
   }
 }
 
-UrlList.defaultProps = {
-  list: []
-};
-
-UrlList.propTypes = {
-  list: PropTypes.array.isRequired
-};
-
 export default UrlList;

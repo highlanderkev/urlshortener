@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Url Display Component matches snapshot 1`] = `
+<div>
+  <h3>
+    Original URL: 
+    Test
+  </h3>
+  <h4>
+    Shortened URL: 
+    Test
+  </h4>
+</div>
+`;

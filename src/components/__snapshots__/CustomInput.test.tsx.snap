@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Custom Input Component matches snapshot 1`] = `
+<div
+  className="form-floating"
+>
+  <input
+    className="form-control"
+    name="test"
+    onChange={[Function]}
+    placeholder="test"
+    type="text"
+    value=""
+  />
+  <label
+    htmlFor="test"
+  >
+    test
+  </label>
+</div>
+`;
