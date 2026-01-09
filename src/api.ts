@@ -3,8 +3,10 @@ import { URLEntry } from "./urlEntry.model";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
+  withCredentials: true,
   headers: {
-    "GB-Access-Token": import.meta.env.VITE_API_KEY || ''
+    "GB-Access-Token": import.meta.env.VITE_API_KEY || '',
+    "Content-Type": "application/json"
   }
 });
 
