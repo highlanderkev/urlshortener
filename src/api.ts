@@ -2,9 +2,11 @@ import axios from "axios";
 import { URLEntry } from "./urlEntry.model";
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL,
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  withCredentials: true,
   headers: {
-    "GB-Access-Token": process.env.REACT_APP_API_KEY || ''
+    "GB-Access-Token": import.meta.env.VITE_API_KEY || '',
+    "Content-Type": "application/json"
   }
 });
 
